@@ -18,9 +18,21 @@ public class Frobenius {
    * the elements of packSizes
    * @param value target/goal number
    * @param packSizes array of distinct, positive pack sizes, in descending order.
-   * @return true if value is a McNugger nuber using the specific pock sizes, false otherwise.
+   * @return true if value is a McNugget number using the sp;ecific pock sizes, false otherwise.
    */
   public static boolean isGeneralMcNugget(int value, int[] packSizes) {
-    return false; // TODO Complete implementation for extra credit.
+    boolean flag = false;
+    if (packSizes.length == 1) {
+      if (value >= 0 && (
+          value == 0 ||
+              isGeneralMcNugget(value - packSizes[0], null)))
+          flag = true;
+      for (int i = 0; i < packSizes.length; i++) {
+        int[] ithElementArray = {packSizes[i]};
+        isGeneralMcNugget(value, ithElementArray);
+      }
+
+    }
+    return flag;
   }
 }
